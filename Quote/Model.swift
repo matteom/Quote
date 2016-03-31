@@ -17,7 +17,7 @@ class Quote: NSObject, NSCoding {
 		self.author = author
 	}
 	
-	required init(coder aDecoder: NSCoder) {
+	required init?(coder aDecoder: NSCoder) {
 		text = aDecoder.decodeObjectForKey(Keys.Text.rawValue) as! String
 		author = aDecoder.decodeObjectForKey(Keys.Author.rawValue) as! String
 	}
@@ -35,7 +35,7 @@ class Quote: NSObject, NSCoding {
 }
 
 class ModelController {
-	let quoteFilePath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first as! String + "/quote.txt"
+	let quoteFilePath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first! + "/quote.txt"
 	var quote: Quote {
 		get {
 			return NSKeyedUnarchiver.unarchiveObjectWithFile(quoteFilePath) as? Quote

@@ -26,7 +26,7 @@ class EditViewController: UIViewController {
 	}
 	
 	@IBAction func save(sender: AnyObject) {
-		let newQuote = Quote(text: textView.text, author: textField.text)
+		let newQuote = Quote(text: textView.text, author: textField.text!)
 		delegate?.quoteWasSaved(newQuote)
 		self.navigationController?.popViewControllerAnimated(true)
 	}
